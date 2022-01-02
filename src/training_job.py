@@ -15,7 +15,7 @@ logging.basicConfig(level=logging.INFO)
 
 def run():
     """
-    Main entry point
+    Main entry point of pipeline
     """
     logging.info("Loading and getting clean data")
     X, y = pipeline.preprocessing.get_cleaned_data(config.DATA_PATH)

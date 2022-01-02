@@ -12,6 +12,8 @@ from sklearn.linear_model import LogisticRegression
 
 RANDOM_STATE = 41
 
+DATA_FILE = 'edited_census.csv'
+
 
 __MAIN_DIR = Path(__file__).parent.parent.absolute()
 
@@ -54,7 +56,6 @@ FEATURES = {
     'drop': ['education']
 }
 
-DATA_FILE = 'cleaned_census.csv'
 
 
 DATA_PATH = os.path.join(__MAIN_DIR, 'data', DATA_FILE)
