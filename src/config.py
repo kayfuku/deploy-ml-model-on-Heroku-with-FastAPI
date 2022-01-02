@@ -54,8 +54,8 @@ FEATURES = {
     'drop': ['education']
 }
 
-__DATA_FILE = 'cleaned_census.csv'
+DATA_FILE = 'cleaned_census.csv'
 
 
-DATA_DIR = os.path.join(__MAIN_DIR, 'data', __DATA_FILE)
+DATA_PATH = os.path.join(__MAIN_DIR, 'data', DATA_FILE)
 
