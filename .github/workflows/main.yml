@@ -1,0 +1,70 @@
+# This workflow will install Python dependencies, configure AWS credentials, set up DVC, and run lint and tests.  
+
+# Name of this Action
+name: CI
+
+# This action runs on push for main branch. 
+on: 
+  push:
+    branches: [ main ]
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8]
+
+    steps:
+      # Calling a pre-built GitHub Action which allows your Action to access your repository.
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it. 
+      - uses: actions/checkout@v2
+
+      # Set up Python. 
+      - name: Set up Python ${{ matrix.python-version }} 
+        uses: actions/setup-python@v2 # A pre-built GitHub Action that sets up a Python environment.
+        with:
+          python-version: ${{ matrix.python-version }} 
+
+      # Install dependencies. 
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip # Upgrade pip to the latest version. 
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi # If we have a requirements.txt, then install it. 
+          
+      # Configure AWS credentials. 
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      
+      # Set up DVC. 
+      - name: Set up DVC
+        uses: iterative/dvc-setup@v1
+      - name: DVC pull
+        run: |
+          dvc pull
+      
+      # Run lint and tests. 
+      - name: Lint with Flake8
+        run: |
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+      - name: Run pytest
+        run: |
+          pytest
+
+
+
+
+
+
+
+
+
+
+
+
+
