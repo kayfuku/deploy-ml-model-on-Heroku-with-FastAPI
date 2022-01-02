@@ -9,7 +9,7 @@ import pandas as pd
 # import great_expectations as ge
 
 import config
-import pipeline
+from pipeline.preprocessing import get_cleaned_data
 
 @pytest.fixture(scope='session')
 def data():
@@ -21,7 +21,7 @@ def data():
     if not os.path.exists(config.DATA_PATH):
         pytest.fail(f"Data not found at path: {config.DATA_PATH}")
 
-    data_df = pipeline.preprocessing.get_cleaned_data(config.DATA_PATH)
+    data_df = get_cleaned_data(config.DATA_PATH)
     # data_df = ge.from_pandas(data_df)
 
     return data_df
