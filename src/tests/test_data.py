@@ -26,12 +26,15 @@ def test_column_presence_and_type(data):
         'capital_loss': pd.api.types.is_integer_dtype,
         'hours_per_week': pd.api.types.is_integer_dtype,
         'native_country': pd.api.types.is_string_dtype,
-        'salary'
+        'salary': pd.api.types.is_integer_dtype,
     }
 
-    for col in columns:
-        assert data.expect_column_to_
+    # Check if every element in required_columns.keys() is in data.columns.values.
+    assert set(data.columns.values).issuperset(set(columns.keys()))
 
+    # Check that the columns are of the right dtype.
+    for col, type_verification_func in columns.items():
+        assert type_verification_func(data[col]), f"Column {col} failed test {type_verification_func}"
 
 
 
