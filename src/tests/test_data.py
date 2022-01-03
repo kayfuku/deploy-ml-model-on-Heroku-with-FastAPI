@@ -12,7 +12,7 @@ def test_column_presence_and_type(data):
     Args:
         data: Pandas DataFrame, data to be tested
     """
-    columns = {
+    required_columns = {
         'age': pd.api.types.is_integer_dtype,
         'workclass': pd.api.types.is_string_dtype,
         'fnlgt': pd.api.types.is_integer_dtype,
@@ -30,9 +30,11 @@ def test_column_presence_and_type(data):
         'salary': pd.api.types.is_integer_dtype,
     }
     # Check if every element in columns.keys() is in data.columns.values.
-    assert set(data.columns.values).issuperset(set(columns.keys()))
+    these_cols_set = set(data.columns.values)
+    for col in required_columns.keys():
+        assert col in these_cols_set, f"Column {col} does not exist."
     # Check that the columns are of the right dtype.
-    for col, type_verification_func in columns.items():
+    for col, type_verification_func in required_columns.items():
         assert type_verification_func(data[col]), f"Column {col} failed test {type_verification_func}"
 
 
@@ -67,4 +69,5 @@ def test_label_salary(data):
     classes = [0, 1]
     these_classes = set(data['salary'].unique())
     assert these_classes == set(classes)
+
 
