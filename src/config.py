@@ -17,21 +17,25 @@ DATA_FILE = 'edited_census.csv'
 
 __MAIN_DIR = Path(__file__).parent.parent.absolute()
 
-model = RandomForestClassifier(
+MODEL = RandomForestClassifier(
     random_state=RANDOM_STATE,
 )
-# model = LogisticRegression(
+# MODEL = LogisticRegression(
 #     random_state=RANDOM_STATE
 # )
 
 PARAM_GRID = None
-if isinstance(model, RandomForestClassifier):
+if isinstance(MODEL, RandomForestClassifier):
+    # To tell the GridSearchCV which part of pipeline the parameters are in,
+    # we need '{name of part of pipeline}__' before parameter name.
     PARAM_GRID = {
-        'model__n_estimators': list(range(50, 151, 25)),
-        'model__max_depth': list(range(2, 11, 2)),
-        'model__min_samples_leaf': list(range(1, 51, 5)),
+        'model__n_estimators': [5],
+        'model__max_depth': [10]
+        # 'model__n_estimators': list(range(50, 151, 25)),
+        # 'model__max_depth': list(range(2, 11, 2)),
+        # 'model__min_samples_leaf': list(range(1, 51, 5)),
     }
-elif isinstance(model, LogisticRegression):
+elif isinstance(MODEL, LogisticRegression):
     PARAM_GRID = {
         'model__C': np.linspace(0.1, 10, 3)
     }
