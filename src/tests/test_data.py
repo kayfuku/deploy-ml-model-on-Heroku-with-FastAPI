@@ -29,10 +29,8 @@ def test_column_presence_and_type(data):
         'native_country': pd.api.types.is_string_dtype,
         'salary': pd.api.types.is_integer_dtype,
     }
-
     # Check if every element in columns.keys() is in data.columns.values.
     assert set(data.columns.values).issuperset(set(columns.keys()))
-
     # Check that the columns are of the right dtype.
     for col, type_verification_func in columns.items():
         assert type_verification_func(data[col]), f"Column {col} failed test {type_verification_func}"
@@ -56,7 +54,17 @@ def test_marital_status_column(data):
     """
     categories = ['Married-civ-spouse', 'Never-married', 'Divorced',
         'Separated', 'Widowed', 'Married-spouse-absent', 'Married-AF-spouse']
-
     these_categories = set(data['marital_status'].unique())
-
     assert these_categories == set(categories)
+
+
+def test_label_salary(data):
+    """
+    Test if salary label contains only two correct classes.
+    Args:
+        data: Pandas DataFrame, data to be tested
+    """
+    classes = [0, 1]
+    these_classes = set(data['salary'].unique())
+    assert these_classes == set(classes)
+
