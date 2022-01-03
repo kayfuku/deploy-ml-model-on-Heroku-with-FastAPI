@@ -11,7 +11,7 @@ from sklearn.linear_model import LogisticRegression
 
 
 RANDOM_STATE = 41
-
+TEST_SIZE = 0.2
 DATA_FILE = 'edited_census.csv'
 
 
