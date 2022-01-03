@@ -4,6 +4,7 @@ Author: Kei
 Date: January, 2022
 """
 import pandas as pd
+import numpy as np
 
 def test_column_presence_and_type(data):
     """
@@ -29,7 +30,7 @@ def test_column_presence_and_type(data):
         'salary': pd.api.types.is_integer_dtype,
     }
 
-    # Check if every element in required_columns.keys() is in data.columns.values.
+    # Check if every element in columns.keys() is in data.columns.values.
     assert set(data.columns.values).issuperset(set(columns.keys()))
 
     # Check that the columns are of the right dtype.
@@ -37,5 +38,22 @@ def test_column_presence_and_type(data):
         assert type_verification_func(data[col]), f"Column {col} failed test {type_verification_func}"
 
 
+def test_education_num_column(data):
+    """
+    Test if education num column values are within correct range.
+    Args:
+        data: Pandas DataFrame, data to be tested
+    """
+    bools = data['education_num'].between(1, 17)
+    assert np.sum(~bools) == 0
 
+
+def test_marital_status_column(data):
+    """
+    Test if marital status column values are with correct categories.
+    Args:
+        data: Pandas DataFrame, data to be tested
+    """
+    categories = ['Married-civ-spouse', 'Never-married', 'Divorced',
+        'Separated', 'Widowed', 'Married-spouse-absent', 'Married-AF-spouse']
 
