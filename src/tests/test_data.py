@@ -57,3 +57,6 @@ def test_marital_status_column(data):
     categories = ['Married-civ-spouse', 'Never-married', 'Divorced',
         'Separated', 'Widowed', 'Married-spouse-absent', 'Married-AF-spouse']
 
+    these_categories = set(data['marital_status'].unique())
+
+    assert these_categories == set(categories)
