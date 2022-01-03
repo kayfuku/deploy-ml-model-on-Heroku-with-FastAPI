@@ -44,7 +44,7 @@ def test_education_num_column(data):
     Args:
         data: Pandas DataFrame, data to be tested
     """
-    bools = data['education_num'].between(1, 17)
+    bools = data['education_num'].between(1, 16)
     assert np.sum(~bools) == 0
 
 
@@ -71,3 +71,11 @@ def test_label_salary(data):
     assert these_classes == set(classes)
 
 
+def test_hours_per_week_range(data):
+    """
+    Test if hours per week column are within correct range.
+    Args:
+        data: Pandas DataFrame, data to be tested
+    """
+    bools = data['hours_per_week'].between(1, 99)
+    assert np.sum(~bools) == 0
