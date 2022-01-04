@@ -9,13 +9,9 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 
 
-
 RANDOM_STATE = 41
 TEST_SIZE = 0.2
 DATA_FILE = 'edited_census.csv'
-
-
-__MAIN_DIR = Path(__file__).parent.parent.absolute()
 
 MODEL = RandomForestClassifier(
     random_state=RANDOM_STATE,
@@ -26,7 +22,7 @@ MODEL = RandomForestClassifier(
 
 PARAM_GRID = None
 if isinstance(MODEL, RandomForestClassifier):
-    # To tell the GridSearchCV which part of pipeline the parameters are in,
+    # To tell the GridSearchCV which part of pipeline the parameters are used in,
     # we need '{name of part of pipeline}__' before parameter name.
     PARAM_GRID = {
         'model__n_estimators': [5],
@@ -60,7 +56,12 @@ FEATURES = {
     'drop': ['education']
 }
 
+__MAIN_DIR = Path(__file__).parent.parent.absolute()
 
+EVAL_FILE = 'eval_' + MODEL.__class__.__name__
+MODEL_FILE = 'pipe_' + MODEL.__class__.__name__
 
 DATA_PATH = os.path.join(__MAIN_DIR, 'data', DATA_FILE)
+EVAL_PATH = os.path.join(__MAIN_DIR, 'eval', EVAL_FILE)
+MODEL_PATH = os.path.join(__MAIN_DIR, 'models', MODEL_FILE)
 

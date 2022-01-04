@@ -5,6 +5,7 @@ Date: January, 2022
 """
 import sys
 import logging
+
 from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
 from sklearn.linear_model import LogisticRegression
@@ -12,6 +13,9 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import OrdinalEncoder, OneHotEncoder, StandardScaler
 from sklearn.pipeline import Pipeline, make_pipeline
 from sklearn.model_selection import GridSearchCV
+
+import config
+from pipeline.evaluate import evaluate
 
 logging.basicConfig(level=logging.INFO)
 
@@ -30,7 +34,7 @@ def create_model_pipeline(model, features):
 
     categorical_preproc = make_pipeline(
         SimpleImputer(strategy='most_frequent'),
-        OneHotEncoder()
+        OneHotEncoder(handle_unknown='ignore')
     )
 
     numeric_preproc = StandardScaler()
@@ -98,6 +102,8 @@ def train(model, X_train, y_train, param_grid, features):
     # Perform grid search.
     logging.info("Performing grid search..")
     best_model = perform_grid_search(model_pipe, X_train, y_train, param_grid)
+
+    evaluate(best_model, X_train, y_train, "train")
 
     return best_model
 

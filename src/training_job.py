@@ -8,8 +8,9 @@ import logging
 from sklearn.model_selection import train_test_split
 
 import config
-from pipeline.preprocessing import get_cleaned_data
+from pipeline.preprocess import get_cleaned_data
 from pipeline.train import train
+from pipeline.evaluate import evaluate
 
 
 logging.basicConfig(level=logging.INFO)
@@ -28,8 +29,8 @@ def run():
         X_df, y_df, test_size=config.TEST_SIZE, random_state=config.RANDOM_STATE,
         stratify=y_df)
 
-    logging.info("Training model..")
-    model_pipe = train(
+    logging.info("Training and validating model..")
+    best_model = train(
         config.MODEL,
         X_train,
         y_train,
@@ -37,9 +38,11 @@ def run():
         config.FEATURES
     )
 
+    logging.info("Testing model..")
+    evaluate(best_model, X_test, y_test, "test")
 
-
-
+    logging.info("Saving model..")
+    joblib.dump(best_model, config.MODEL_PATH)
 
 
 if __name__ == "__main__":
