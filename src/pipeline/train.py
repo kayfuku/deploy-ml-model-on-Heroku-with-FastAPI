@@ -3,18 +3,16 @@ Functions needed to train model.
 Author: Kei
 Date: January, 2022
 """
-import sys
 import logging
 
 from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.preprocessing import OrdinalEncoder, OneHotEncoder, StandardScaler
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.pipeline import Pipeline, make_pipeline
 from sklearn.model_selection import GridSearchCV
 
-import config
 from pipeline.evaluate import evaluate
 
 logging.basicConfig(level=logging.INFO)
@@ -40,19 +38,18 @@ def create_model_pipeline(model, features):
     numeric_preproc = StandardScaler()
 
     features_preproc = ColumnTransformer([
-            ('drop', 'drop', features['drop']),
-            ('categorical', categorical_preproc, features['categorical']),
-            ('numeric', numeric_preproc, features['numeric'])
-        ],
+        ('drop', 'drop', features['drop']),
+        ('categorical', categorical_preproc, features['categorical']),
+        ('numeric', numeric_preproc, features['numeric'])
+    ],
         remainder='passthrough'
     )
 
     # model pipeline
     model_pipe = Pipeline([
-            ('features_preprocessor', features_preproc),
-            ('model', model)
-        ]
-    )
+        ('features_preprocessor', features_preproc),
+        ('model', model)
+    ])
 
     return model_pipe
 
@@ -103,38 +100,4 @@ def train(model, X_train, y_train, param_grid, features):
     logging.info("Performing grid search..")
     best_model = perform_grid_search(model_pipe, X_train, y_train, param_grid)
 
-    evaluate(best_model, X_train, y_train, "train")
-
     return best_model
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

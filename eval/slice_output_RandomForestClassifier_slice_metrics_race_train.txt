@@ -1,0 +1,8 @@
+Model evaluation on race slice of train data
+          Category  Precision   Recall       F1
+             White   0.806138 0.555125 0.657489
+             Black   0.809524 0.429022 0.560825
+Asian-Pac-Islander   0.756477 0.637555 0.691943
+             Other   0.733333 0.611111 0.666667
+Amer-Indian-Eskimo   0.714286 0.344828 0.465116
+

@@ -31,4 +31,3 @@ def get_cleaned_data(path):
     data_df['salary'] = data_df['salary'].map({'>50K': 1, '<=50K': 0})
 
     return data_df
-

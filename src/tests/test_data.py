@@ -6,6 +6,7 @@ Date: January, 2022
 import pandas as pd
 import numpy as np
 
+
 def test_column_presence_and_type(data):
     """
     Test if all expected columns exist
@@ -35,7 +36,8 @@ def test_column_presence_and_type(data):
         assert col in these_cols_set, f"Column {col} does not exist."
     # Check that the columns are of the right dtype.
     for col, type_verification_func in required_columns.items():
-        assert type_verification_func(data[col]), f"Column {col} failed test {type_verification_func}"
+        assert type_verification_func(
+            data[col]), f"Column {col} failed test {type_verification_func}"
 
 
 def test_education_num_column(data):
@@ -54,8 +56,9 @@ def test_marital_status_column(data):
     Args:
         data: Pandas DataFrame, data to be tested
     """
-    categories = ['Married-civ-spouse', 'Never-married', 'Divorced',
-        'Separated', 'Widowed', 'Married-spouse-absent', 'Married-AF-spouse']
+    categories = [
+        'Married-civ-spouse', 'Never-married', 'Divorced', 'Separated',
+        'Widowed', 'Married-spouse-absent', 'Married-AF-spouse']
     these_categories = set(data['marital_status'].unique())
     assert these_categories == set(categories)
 

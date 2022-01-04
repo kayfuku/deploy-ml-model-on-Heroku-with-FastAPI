@@ -5,11 +5,11 @@ Date: January, 2022
 """
 import os
 import pytest
-import pandas as pd
 # import great_expectations as ge
 
 import config
-from pipeline.preprocessing import get_cleaned_data
+from pipeline.preprocess import get_cleaned_data
+
 
 @pytest.fixture(scope='session')
 def data():
@@ -25,5 +25,3 @@ def data():
     # data_df = ge.from_pandas(data_df)
 
     return data_df
-
-

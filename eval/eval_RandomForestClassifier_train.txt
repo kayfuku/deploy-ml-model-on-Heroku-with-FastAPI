@@ -1,2 +1,2 @@
 Evaluation on train data
-F1: 0.654, Precision: 0.803, Recall: 0.551
+Precision: 0.803, Recall: 0.551, F1: 0.654

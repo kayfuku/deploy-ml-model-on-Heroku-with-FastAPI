@@ -12,6 +12,7 @@ from sklearn.linear_model import LogisticRegression
 RANDOM_STATE = 41
 TEST_SIZE = 0.2
 DATA_FILE = 'edited_census.csv'
+SLICE_COLUMNS = ['sex', 'race']
 
 MODEL = RandomForestClassifier(
     random_state=RANDOM_STATE,
@@ -59,9 +60,10 @@ FEATURES = {
 __MAIN_DIR = Path(__file__).parent.parent.absolute()
 
 EVAL_FILE = 'eval_' + MODEL.__class__.__name__
+EVAL_SLICE_FILE = 'slice_output_' + MODEL.__class__.__name__
 MODEL_FILE = 'pipe_' + MODEL.__class__.__name__
 
 DATA_PATH = os.path.join(__MAIN_DIR, 'data', DATA_FILE)
 EVAL_PATH = os.path.join(__MAIN_DIR, 'eval', EVAL_FILE)
+EVAL_SLICE_PATH = os.path.join(__MAIN_DIR, 'eval', EVAL_SLICE_FILE)
 MODEL_PATH = os.path.join(__MAIN_DIR, 'models', MODEL_FILE)
-
