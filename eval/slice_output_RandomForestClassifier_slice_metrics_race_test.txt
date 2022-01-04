@@ -1,8 +1,8 @@
 Model evaluation on race slice of test data
           Category  Precision   Recall       F1
-             White   0.798523 0.526792 0.634801
-             Black   0.787234 0.528571 0.632479
-Asian-Pac-Islander   0.785714 0.702128 0.741573
+             White   0.800542 0.617258 0.697053
+             Black   0.789474 0.642857 0.708661
+Asian-Pac-Islander   0.755556 0.723404 0.739130
 Amer-Indian-Eskimo   1.000000 0.571429 0.727273
-             Other   0.800000 0.571429 0.666667
+             Other   1.000000 0.714286 0.833333
 

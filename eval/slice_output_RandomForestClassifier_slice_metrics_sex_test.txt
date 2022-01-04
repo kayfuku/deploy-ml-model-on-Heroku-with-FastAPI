@@ -1,5 +1,5 @@
 Model evaluation on sex slice of test data
 Category  Precision   Recall       F1
-    Male   0.799097 0.539634 0.644222
-  Female   0.793750 0.496094 0.610577
+    Male   0.801556 0.628049 0.704274
+  Female   0.790576 0.589844 0.675615
 
