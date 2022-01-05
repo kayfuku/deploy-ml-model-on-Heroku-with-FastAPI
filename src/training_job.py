@@ -5,6 +5,7 @@ Date: January, 2022
 import joblib
 import logging
 from sklearn.model_selection import train_test_split
+from sklearn.utils import estimator_html_repr
 
 import config
 from pipeline.preprocess import get_cleaned_data
@@ -62,6 +63,10 @@ def run():
     # Save model.
     logging.info("Saving model..")
     joblib.dump(best_model, config.MODEL_PATH)
+
+    # Save pipeline as html format.
+    with open(config.MODEL_PATH + '.html', 'w') as f:
+        f.write(estimator_html_repr(best_model))
 
 
 if __name__ == "__main__":

@@ -13,7 +13,6 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.pipeline import Pipeline, make_pipeline
 from sklearn.model_selection import GridSearchCV
 
-from pipeline.evaluate import evaluate
 
 logging.basicConfig(level=logging.INFO)
 
