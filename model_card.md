@@ -1,9 +1,8 @@
 # Model Card
 
 ## Model Details
-• This model is trained to predict whether a person makes over 50K a year. 
-![model architecture]()
-<img src='/screenshots/model_architecture.jpg' width=1122, height=552>
+• This model is trained to predict whether a person makes over 50K a year.  
+<img src='/screenshots/model_architecture.jpg' width=561, height=276>
 
 ## Intended Use
 
