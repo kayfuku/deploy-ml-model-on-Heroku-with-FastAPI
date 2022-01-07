@@ -1,5 +1,5 @@
 """
-Functions needed to train model.
+Schemas of data to be sent by http request
 Author: Kei
 Date: January, 2022
 """

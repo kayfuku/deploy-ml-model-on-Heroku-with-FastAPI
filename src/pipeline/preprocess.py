@@ -19,7 +19,7 @@ def get_cleaned_data(path):
 
     data_df = data_df.drop_duplicates()
 
-    # change column names to use _ instead of -
+    # Change column names to use '_' instead of '-' to use them as variables.
     columns = data_df.columns
     columns = [col.replace('-', '_') for col in columns]
     data_df.columns = columns
@@ -27,7 +27,7 @@ def get_cleaned_data(path):
     # # make all characters to be lowercase in string columns
     # data_df = data_df.applymap(lambda s: s.lower() if isinstance(s, str) else s)
 
-    # map label salary to numbers
+    # Map label salary to numbers.
     data_df['salary'] = data_df['salary'].map({'>50K': 1, '<=50K': 0})
 
     return data_df
