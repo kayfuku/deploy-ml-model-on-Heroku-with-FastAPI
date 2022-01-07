@@ -1,8 +1,8 @@
 # Model Card
 
-For additional information see the Model Card paper: https://arxiv.org/pdf/1810.03993.pdf
-
 ## Model Details
+• This model is trained to predict whether a person makes over 50K a year. 
+!(/screenshots/model_architecture.jpg)
 
 ## Intended Use
 
