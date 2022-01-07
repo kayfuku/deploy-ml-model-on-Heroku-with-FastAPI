@@ -19,10 +19,15 @@
 • Random Forest algorithm was used, which is an ensemble of decision trees with bagging method.  
   
 ## Evaluation Data  
-• I used 5 folds cross validation with some combinations of parameters grid search.  
+• I used 5 folds cross validation with some combinations of parameters grid search and chose the best model using F1 score.  
   
 ## Metrics
 • The model was evaluated based on F1 score, which uses Precision and Recall.  
+• Evaluation on test data.  
+|Precision|Recall|F1 score|
+|:-:|:-:|:-:|
+|0.767|0.622|0.687|
+  
   
 ## Ethical Considerations
 • The dataset is open sourced on UCI machine learning repository for educational purposes.  
