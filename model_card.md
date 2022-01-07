@@ -20,10 +20,10 @@
   
 ## Evaluation Data  
 • I used 5 folds cross validation with some combinations of parameters grid search and chose the best model using F1 score.  
-  
+
 ## Metrics
 • The model was evaluated based on F1 score, which uses Precision and Recall.  
-• Evaluation on test data.  
+• Evaluation on test data. The test data was 20% of the entire dataset.  
 |Precision|Recall|F1 score|
 |:-:|:-:|:-:|
 |0.767|0.622|0.687|
