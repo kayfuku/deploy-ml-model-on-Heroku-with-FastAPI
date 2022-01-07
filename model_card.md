@@ -11,7 +11,7 @@
 • Intended to be used to determine whether a person makes over 50K a year or not.  
   
 ## Training Data  
-• ![Census Income Data Set] from UCI (https://archive.ics.uci.edu/ml/datasets/census+income)  
+• ![Census Income Data Set](https://archive.ics.uci.edu/ml/datasets/census+income) from UCI  
 • Features: 'age', 'workclass', 'fnlgt', 'education-num', 'marital-status', 'occupation', 'relationship', 'race', 'sex','capital-gain', 'capital-loss', 'hours-per-week', 'native-country'  
 • Target: 'salary'  
 • For categrorical data, missing values were imputed by most frequent value, and OneHotEncoder was used to encode.  
