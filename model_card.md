@@ -4,6 +4,7 @@
 • This model is trained to predict whether a person makes over 50K a year.  
 • Random Forest will be used to develop the model.  
 • Kei created the model. This project is a part of Udacity Machine Learning DevOps Engineer nanodegree program.  
+  
 <img src='/screenshots/model_architecture.jpg' width=561, height=276>
   
 ## Intended Use  
