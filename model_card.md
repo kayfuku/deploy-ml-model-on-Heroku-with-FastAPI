@@ -2,7 +2,8 @@
 
 ## Model Details
 • This model is trained to predict whether a person makes over 50K a year. 
-![model architecture](/screenshots/model_architecture.jpg | width=1122, height=552)
+![model architecture]()
+<img src='/screenshots/model_architecture.jpg' width=1122, height=552>
 
 ## Intended Use
 
