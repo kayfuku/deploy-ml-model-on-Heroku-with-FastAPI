@@ -26,8 +26,8 @@ if isinstance(MODEL, RandomForestClassifier):
     # To tell the GridSearchCV which part of pipeline the parameters are used in,
     # we need '{name of part of pipeline}__' before parameter name.
     PARAM_GRID = {
-        'model__n_estimators': [20],
-        'model__max_depth': [20]
+        'model__n_estimators': [10, 20, 40],
+        'model__max_depth': [8, 16, 32]
         # 'model__n_estimators': list(range(50, 151, 25)),
         # 'model__max_depth': list(range(2, 11, 2)),
         # 'model__min_samples_leaf': list(range(1, 51, 5)),
