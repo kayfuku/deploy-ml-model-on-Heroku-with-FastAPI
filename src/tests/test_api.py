@@ -34,8 +34,20 @@ def test_predict():
     }
     response = client.post('/predict', json=data)
     # print(response.json())
-    assert response.status_code == HTTPStatus.OK
+    assert response.status_code == HTTPStatus.OK  # 200
     assert int(response.json()['label']) == 0 or \
         int(response.json()['label']) == 1
     assert float(response.json()['prob']) >= 0 and \
         float(response.json()['label']) <= 1
+
+
+def test_invalid_predict():
+    """
+    Test predict function with invalid request, POST /predict
+    """
+    data = {
+        'age': 40,
+    }
+    response = client.post('/predict', json=data)
+    # print(response.json())
+    assert response.status_code == HTTPStatus.UNPROCESSABLE_ENTITY  # 422
