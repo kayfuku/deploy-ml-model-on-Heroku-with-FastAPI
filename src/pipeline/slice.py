@@ -3,7 +3,6 @@ Functions needed to evaluate model on a slice of data.
 Author: Kei inspired by and learned a lot from Ibrahim
 Date: January, 2022
 """
-import os
 import sys
 import logging
 import pandas as pd

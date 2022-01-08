@@ -3,7 +3,6 @@ FastAPI routing functions
 Author: Kei
 Date: January, 2022
 """
-from fastapi.param_functions import Body
 import yaml
 import joblib
 import numpy as np
