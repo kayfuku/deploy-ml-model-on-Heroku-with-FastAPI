@@ -6,7 +6,6 @@ Date: January, 2022
 from app.app import app
 from fastapi.testclient import TestClient
 from http import HTTPStatus
-import pytest
 
 client = TestClient(app)
 
