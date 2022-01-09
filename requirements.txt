@@ -128,7 +128,7 @@ pygit2==1.7.2
 Pygments==2.10.0
 pygtrie==2.4.2
 pyOpenSSL==21.0.0
-pyparsing==3.0.6
+pyparsing
 pyrsistent==0.17.3
 PySocks==1.7.1
 pytest==6.2.5
