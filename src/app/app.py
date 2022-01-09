@@ -3,6 +3,7 @@ FastAPI routing functions
 Author: Kei
 Date: January, 2022
 """
+import os
 import yaml
 import joblib
 import numpy as np
@@ -11,6 +12,13 @@ from fastapi import FastAPI, Body
 
 from config import MODEL_PATH, EXAMPLES_PATH
 from app.schemas import Person
+
+# to use dvc on Heroku
+if "DYNO" in os.environ and os.path.isdir(".dvc"):
+    os.system("dvc config core.no_scm true")
+    if os.system("dvc pull") != 0:
+        exit("dvc pull failed")
+    os.system("rm -r .dvc .apt/usr/lib/dvc")
 
 app = FastAPI(
     title="Udacity project 3",
