@@ -39,8 +39,6 @@ jobs:
           aws-region: us-east-1
       
       # Set up DVC. 
-      - name: Set up DVC
-        uses: iterative/dvc-setup@v1
       - name: DVC pull
         run: |
           echo "Running dvc pull"
