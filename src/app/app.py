@@ -10,15 +10,15 @@ import numpy as np
 import pandas as pd
 from fastapi import FastAPI, Body
 
-from config import MODEL_PATH, EXAMPLES_PATH
+from config import __MAIN_DIR, MODEL_PATH, EXAMPLES_PATH
 from app.schemas import Person
 
 # to use dvc on Heroku
 print("app.py start!!")
-if "DYNO" in os.environ and os.path.isdir(".dvc"):
+if "DYNO" in os.environ and os.path.isdir(os.path.join(__MAIN_DIR, '.dvc')):
     print(".dvc detected!")
     os.system("dvc config core.no_scm true")
-    os.system("dvc remote add -d s3-bucket s3://bucket-demo-fastapi")
+    # os.system("dvc remote add -d s3-bucket s3://bucket-demo-fastapi")
     if os.system("dvc pull") != 0:
         exit("dvc pull failed")
     os.system("rm -r .dvc .apt/usr/lib/dvc")
@@ -36,12 +36,12 @@ with open(EXAMPLES_PATH) as f:
 # print(examples)
 
 
-@app.get('/')
+@ app.get('/')
 async def greetings():
     return "Hello, welcome!"
 
 
-@app.post('/predict')
+@ app.post('/predict')
 async def predict(person: Person = Body(..., example=examples['post_examples'])):
     print("predict() called.")
     person = person.dict()
