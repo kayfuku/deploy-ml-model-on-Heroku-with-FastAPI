@@ -14,10 +14,10 @@ from config import MODEL_PATH, EXAMPLES_PATH
 from app.schemas import Person
 
 # to use dvc on Heroku
+print("app.py start!!")
 if "DYNO" in os.environ and os.path.isdir(".dvc"):
     print(".dvc detected!")
     os.system("dvc config core.no_scm true")
-    os.system("dvc remote add -d s3-bucket s3://bucket-demo-fastapi")
     if os.system("dvc pull") != 0:
         exit("dvc pull failed")
     os.system("rm -r .dvc .apt/usr/lib/dvc")
