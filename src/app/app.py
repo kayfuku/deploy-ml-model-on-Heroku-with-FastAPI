@@ -13,8 +13,10 @@ from fastapi import FastAPI, Body
 from config import __MAIN_DIR, MODEL_PATH, EXAMPLES_PATH
 from app.schemas import Person
 
-# to use dvc on Heroku
-print("app.py start!!")
+# print("app.py start!!")
+
+# To use dvc on Heroku
+# Check if the host is Heroku server and this project is dvc initialized.
 if "DYNO" in os.environ and os.path.isdir(os.path.join(__MAIN_DIR, '.dvc')):
     print(".dvc detected!")
     os.system("dvc config core.no_scm true")
