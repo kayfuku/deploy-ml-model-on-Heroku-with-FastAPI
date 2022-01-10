@@ -24,7 +24,7 @@ if "DYNO" in os.environ and os.path.isdir(os.path.join(__MAIN_DIR, '.dvc')):
     if os.system("dvc pull") != 0:
         exit("dvc pull failed")
     os.system("rm -r " +
-              os.path.join(__MAIN_DIR, '.dvc') +
+              os.path.join(__MAIN_DIR, '.dvc') + " " +
               os.path.join(__MAIN_DIR, '.apt/usr/lib/dvc'))
 
 app = FastAPI(
