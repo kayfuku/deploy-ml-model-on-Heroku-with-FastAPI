@@ -20,7 +20,7 @@ from app.schemas import Person
 if "DYNO" in os.environ and os.path.isdir(os.path.join(__MAIN_DIR, '.dvc')):
     print(".dvc detected!")
     os.system("dvc config core.no_scm true")
-    # os.system("dvc remote add -d s3-bucket s3://bucket-demo-fastapi")
+    os.system("dvc remote add -d s3-bucket s3://bucket-demo-fastapi")
     if os.system("dvc pull") != 0:
         exit("dvc pull failed")
     os.system("rm -r " +
