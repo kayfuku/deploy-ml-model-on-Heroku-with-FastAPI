@@ -1,4 +1,4 @@
-# Deploying-a-ML-Model-on-Heroku-with-FastAPI
+# Deploying a ML Model on Heroku with FastAPI
 The third project ML DevOps Engineer Nanodegree by Udacity.  
 
 ## Description
@@ -43,7 +43,7 @@ http://127.0.0.1:8000/docs
 <img src='/screenshots/fastapi_docs.png' width=800>
 
 
-## 4. Testing the project
+## 4. Testing the data and the model
 ```
 cd src
 pytest -vv
