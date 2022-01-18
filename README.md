@@ -65,9 +65,9 @@ git push
 
 <img src='/screenshots/continuous_deployment.png' width=800>
 
-## 8. Root API endpoint
+## 8. Testing deployment on Heroku, demo get request to root endpoint
 
-http://127.0.0.1:8000/  
+https://deploy-ml-model-with-github.herokuapp.com/  
 <img src='/screenshots/live_get.png' width=800>
 
 ## 9. Testing deployment on Heroku, demo post request
