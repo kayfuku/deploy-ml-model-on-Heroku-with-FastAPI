@@ -1,11 +1,11 @@
-# Deploying-a-ML-Model-on-Heroku-with-FastAPI
-The third project ML DevOps Engineer Nanodegree by Udacity. Instructions are available in udacity's repository
+# Deploying a ML Model on Heroku with FastAPI
+The third project ML DevOps Engineer Nanodegree by Udacity.  
 
 ## Description
 This project is part of the Udacity course, "Machine Learning DevOps Engineer". Instructions are available in udacity's [repository](https://github.com/udacity/nd0821-c3-starter-code/tree/master/starter). The project is to build a machine learning application that predicts whether a person's annual income is more than $50K using the census income dataset from UCI. The application is deployed using FastAPI, with CI/CD using Github Actions and Heroku.
 
 ## Prerequisites
-Python and Jupyter Notebook are required  
+Python and Jupyter Notebook   
 AWS account with S3 bucket  
 Github account to use Github Actions for CI  
 Heroku account for CD  
@@ -15,10 +15,10 @@ In addition to the following CLI tools
 AWS CLI  
 Heroku CLI  
 Dependencies  
-This project dependencies is available in the requirements.txt file.  
+This project dependencies are available in the requirements.txt file.  
   
 ## Installation
-Use the package manager pip to install the dependencies from the requirements.txt. Its recommended to install it in a separate virtual environment.
+Use the package manager pip to install the dependencies from the requirements.txt. It's recommended to install it in a separate virtual environment.
 
 ```pip install -r requirements.txt```
 
@@ -30,20 +30,20 @@ The config file contains MODEL variable of RandomForestClassifier. Each model wi
 cd src
 python training_job.py
 ```
-This saves a seralized model, generates evaluation metrics, slice evaluation metrics and figures,
+This saves a seralized model, generates evaluation results and slice evaluation results,
 
 ## 2. Start FastAPI app
 ```
 cd src
 uvicorn app.api:app --reload
 ```
-## 3. FastAPI app documentation to test the API from the browser
+## 3. FastAPI app documentation
 
 http://127.0.0.1:8000/docs  
 <img src='/screenshots/fastapi_docs.png' width=800>
 
 
-## 4. Testing the project
+## 4. Testing the data and the model
 ```
 cd src
 pytest -vv
@@ -71,3 +71,5 @@ http://127.0.0.1:8000/
 ```
 python request_heroku.py
 ```
+<img src='/screenshots/live_post.png' width=800>
+
