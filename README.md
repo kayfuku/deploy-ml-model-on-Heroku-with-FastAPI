@@ -28,14 +28,14 @@ Use the package manager pip to install the dependencies from the requirements.tx
 ## Usage
 The config file contains MODEL variable of RandomForestClassifier. Each model with a set of parameters for the grid search PARAM_GRID. You can use your own model with the parameters needed. The SLICE_COLUMNS variable holds the columns for slice evaluation.
 
-## 1. Start training
+## 1. Starting training
 ```
 cd src
 python training_job.py
 ```
 This saves a seralized model, generates evaluation results and slice evaluation results,
 
-## 2. Start FastAPI app
+## 2. Starting FastAPI app
 ```
 cd src
 uvicorn app.api:app --reload
@@ -43,7 +43,7 @@ uvicorn app.api:app --reload
 ## 3. FastAPI app documentation
 
 http://127.0.0.1:8000/docs  
-<img src='/screenshots/fastapi_docs.png' width=800>
+<img src='/screenshots/fastapi_docs.jpg' width=800>
 
 
 ## 4. Testing the data and the model
@@ -70,7 +70,7 @@ git push
 http://127.0.0.1:8000/  
 <img src='/screenshots/live_get.png' width=800>
 
-## 9. Test deployment on Heroku, demo post request
+## 9. Testing deployment on Heroku, demo post request
 ```
 python request_heroku.py
 ```
