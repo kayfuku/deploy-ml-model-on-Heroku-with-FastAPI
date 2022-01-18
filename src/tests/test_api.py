@@ -16,7 +16,7 @@ def test_greetings():
     """
     response = client.get('/')
     assert response.status_code == HTTPStatus.OK
-    assert response.json() == "Hello, welcome!"
+    assert response.json() == "Hello, welcome!!"
 
 
 def test_predict_label_1():
