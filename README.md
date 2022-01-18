@@ -33,7 +33,7 @@ The config file contains MODEL variable of RandomForestClassifier. Each model wi
 cd src
 python training_job.py
 ```
-This saves a seralized model, generates evaluation results and slice evaluation results,
+This saves a seralized model, generates evaluation results and slice evaluation results.  
 
 ## 2. Starting FastAPI app
 ```
