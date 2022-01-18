@@ -1,4 +1,4 @@
-# Deploying a ML Model on Heroku with FastAPI
+# Deploying an ML Model on Heroku with FastAPI
 The third project ML DevOps Engineer Nanodegree by Udacity.  
 
 ## Overview
