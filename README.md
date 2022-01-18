@@ -1,9 +1,12 @@
 # Deploying a ML Model on Heroku with FastAPI
 The third project ML DevOps Engineer Nanodegree by Udacity.  
 
-## Description
+## Overview
 This project is part of the Udacity course, "Machine Learning DevOps Engineer". Instructions are available in udacity's [repository](https://github.com/udacity/nd0821-c3-starter-code/tree/master/starter). The project is to build a machine learning application that predicts whether a person's annual income is more than $50K using the census income dataset from UCI. The application is deployed using FastAPI, with CI/CD using Github Actions and Heroku.
-
+  
+<img src='/screenshots/overview.jpg' width=800>
+  
+  
 ## Prerequisites
 Python and Jupyter Notebook   
 AWS account with S3 bucket  
