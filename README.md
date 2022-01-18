@@ -1,45 +1,73 @@
-Working in a command line environment is recommended for ease of use with git and dvc. If on Windows, WSL1 or 2 is recommended.
+# Deploying-a-ML-Model-on-Heroku-with-FastAPI
+The third project ML DevOps Engineer Nanodegree by Udacity. Instructions are available in udacity's repository
 
-# Environment Set up
-* Download and install conda if you don’t have it already.
-    * Use the supplied requirements file to create a new environment, or
-    * conda create -n [envname] "python=3.8" scikit-learn dvc pandas numpy pytest jupyter jupyterlab fastapi uvicorn -c conda-forge
-    * Install git either through conda (“conda install git”) or through your CLI, e.g. sudo apt-get git.
+## Description
+This project is part of Unit 4: Deploying a Scalable ML Pipeline in Production. The problem is to build a machine learning application that predicts an employer's annual income more than $50K using the census income dataset from UCI. The application is deployed using FastAPI, with CI and CD using Github Actions and Heroku respectively.
 
-## Repositories
-* Create a directory for the project and initialize git and dvc.
-    * As you work on the code, continually commit changes. Generated models you want to keep must be committed to dvc.
-* Connect your local git repo to GitHub.
-* Setup GitHub Actions on your repo. You can use one of the pre-made GitHub Actions if at a minimum it runs pytest and flake8 on push and requires both to pass without error.
-    * Make sure you set up the GitHub Action to have the same version of Python as you used in development.
-* Set up a remote repository for dvc.
+## Prerequisites
+Python and Jupyter Notebook are required
+AWS account with S3 bucket
+Github account to use Github Actions for CI
+Heroku account for CD
+Linux environment may be needed within windows through WSL
+In addition to the following CLI tools
+  
+AWS CLI
+Heroku CLI
+Dependencies
+This project dependencies is available in the requirements.txt file.
 
-# Data
-* Download census.csv and commit it to dvc.
-* This data is messy, try to open it in pandas and see what you get.
-* To clean it, use your favorite text editor to remove all spaces.
-* Commit this modified data to dvc (we often want to keep the raw data untouched but then can keep updating the cooked version).
+## Installation
+Use the package manager pip to install the dependencies from the requirements.txt. Its recommended to install it in a separate virtual environment.
 
-# Model
-* Using the starter code, write a machine learning model that trains on the clean data and saves the model. Complete any function that has been started.
-* Write unit tests for at least 3 functions in the model code.
-* Write a function that outputs the performance of the model on slices of the data.
-    * Suggestion: for simplicity, the function can just output the performance on slices of just the categorical features.
-* Write a model card using the provided template.
+```pip install -r requirements.txt```
 
-# API Creation
-*  Create a RESTful API using FastAPI this must implement:
-    * GET on the root giving a welcome message.
-    * POST that does model inference.
-    * Type hinting must be used.
-    * Use a Pydantic model to ingest the body from POST. This model should contain an example.
-   	 * Hint: the data has names with hyphens and Python does not allow those as variable names. Do not modify the column names in the csv and instead use the functionality of FastAPI/Pydantic/etc to deal with this.
-* Write 3 unit tests to test the API (one for the GET and two for POST, one that tests each prediction).
+## Usage
+The config file contains MODEL variable with a choice of either LogisticRegression or RandomForestClassifier. Each model with a set of parameters for the grid search PARAM_GRID. You can your own model with the parameters needed. The SLICE_COLUMNS variable holds the columns for slice evaluation.
 
-# API Deployment
-* Create a free Heroku account (for the next steps you can either use the web GUI or download the Heroku CLI).
-* Create a new app and have it deployed from your GitHub repository.
-    * Enable automatic deployments that only deploy if your continuous integration passes.
-    * Hint: think about how paths will differ in your local environment vs. on Heroku.
-    * Hint: development in Python is fast! But how fast you can iterate slows down if you rely on your CI/CD to fail before fixing an issue. I like to run flake8 locally before I commit changes.
-* Write a script that uses the requests module to do one POST on your live API.
+## 1. Start training
+```
+cd src
+python training_job.py
+```
+This saves a seralized model, generates evaluation metrics, slice evaluation metrics and figures,
+
+## 2. Start FastAPI app
+```
+cd src
+uvicorn app.api:app --reload
+```
+## 3. FastAPI app documentation to test the API from the browser
+
+http://127.0.0.1:8000/docs
+<img src='/screenshots/fastapi_docs.png' width=400>
+
+
+## 4. Testing the project
+```
+cd src
+pytest -vv
+```
+## 5. Showing tracked files with DVC
+```
+dvc dag
+```
+<img src='/screenshots/dvcdag.png' width=400>
+
+## 6. CI using github action will be triggered upon pushing to github
+```
+git push
+```
+## 7. CD is enabled from within Heroku app settings
+
+<img src='/screenshots/continuous_deployment.png' width=400>
+
+## 8. Root API endpoint
+
+http://127.0.0.1:8000/
+<img src='/screenshots/live_get.png' width=400>
+
+## 9. Test deployment on Heroku, demo post request
+```
+python request_heroku.py
+```
