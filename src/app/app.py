@@ -43,7 +43,7 @@ with open(EXAMPLES_PATH) as f:
 
 @ app.get('/')
 async def greetings():
-    return "Hello, welcome!"
+    return "Hello, welcome!!"
 
 
 @ app.post('/predict')
